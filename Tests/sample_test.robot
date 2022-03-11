@@ -11,13 +11,32 @@ Test Teardown  Common.Close test browser
 
 Example of connecting to Lambdatest via Robot Framework 
 	[Timeout]   ${TIMEOUT}
-	Page should contain element  name:li1
-	Page should contain element  name:li2
-
-	Click button  name:li1	
-	Click button  name:li2	
+	# Let's select the location
+	Page should contain element  id:headlessui-listbox-button-1
+	Click Element  id:headlessui-listbox-button-1	
+	Page should contain element  id:Bali
+	Click Element  id:Bali	
+	Log To Console	Location is selected as Bali.
 		
-	Input text  id:sampletodotext  Yey Let's add it to list
-	Click button  id:addbutton
-	${response}    Get Text    xpath=/html/body/div/div/div/ul/li[6]/span
-	Should Be Equal As Strings    ${response}    Yey Let's add it to list
+	# Let's select the number of guests
+	Page should contain element  id:headlessui-listbox-button-5		
+	Click Element  id:headlessui-listbox-button-5
+	Page should contain element  id:2	
+	Click Element  id:2
+	Log To Console 	Number of guests are selected.
+
+	# Searching for the results
+	Page should contain element  xpath: //*[@id="search"]
+	Click Element	xpath: //*[@id="search"]
+	
+	# Let's select one of the hotels for booking
+	Wait Until Element Is Visible 	id:reserve-now
+	Click button	id:reserve-now
+	Wait Until Element Is Visible 	id:proceed
+	Click button	id:proceed
+	Log To Console	Booking is confirmed.
+
+	# Let's download the invoice
+	Wait Until Element Is Visible 	id:invoice
+	Click button	id:invoice
+	Log To Console	Tests are run successfully!

@@ -6,12 +6,14 @@ Library  LambdaTestStatus.py
 
 @{_tmp}
     ...  browserName: ${browserName},
-    ...  platform: ${platform},
-    ...  version: ${version},
+    ...  platform: ${platformName},
+    ...  version: ${browserVersion},
     ...  visual: ${visual},
     ...  network: ${network},
     ...  console: ${console},
-    ...  name: RobotFramework Lambda Test
+    ...  build: Robot - Python,
+    ...  name: Robot Demo Test
+    
 
 ${BROWSER}          ${ROBOT_BROWSER}
 ${CAPABILITIES}     ${EMPTY.join(${_tmp})}
@@ -22,7 +24,7 @@ ${TIMEOUT}          3000
 
 Open test browser
     [Timeout]   ${TIMEOUT}
-    Open browser  https://lambdatest.github.io/sample-todo-app/  browser=${BROWSER}
+    Open browser  https://stage-demo.lambdatest.com/  browser=${BROWSER}
     ...  remote_url=${REMOTE_URL}
     ...  desired_capabilities=${CAPABILITIES}
 
